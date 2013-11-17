@@ -38,7 +38,12 @@ OimouGenerator.prototype.askFor = function askFor() {
 
 OimouGenerator.prototype.app = function app() {
   this.mkdir('app');
-  this.mkdir('app/templates');
+  this.mkdir('app/view');
+  this.mkdir('app/controller');
+  this.mkdir('app/model');
+  this.mkdir('app/js');
+  this.mkdir('app/css');
+  this.mkdir('app/lib');
 
   this.copy('_package.json', 'package.json');
   this.copy('_bower.json', 'bower.json');

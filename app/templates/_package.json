@@ -2,6 +2,7 @@
   "name": "package",
   "version": "0.0.0",
   "dependencies": {
-    "grunt": "*"
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3"
   }
 }
