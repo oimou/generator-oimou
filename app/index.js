@@ -3,7 +3,6 @@ var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
 
-
 var OimouGenerator = module.exports = function OimouGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
@@ -37,13 +36,15 @@ OimouGenerator.prototype.askFor = function askFor() {
 };
 
 OimouGenerator.prototype.app = function app() {
-  this.mkdir('app');
-  this.mkdir('app/view');
-  this.mkdir('app/controller');
-  this.mkdir('app/model');
-  this.mkdir('app/js');
-  this.mkdir('app/css');
-  this.mkdir('app/lib');
+  var PUBLIC_DIR = "public";
+
+  this.mkdir(PUBLIC_DIR + '');
+  this.mkdir(PUBLIC_DIR + '/view');
+  this.mkdir(PUBLIC_DIR + '/controller');
+  this.mkdir(PUBLIC_DIR + '/model');
+  this.mkdir(PUBLIC_DIR + '/js');
+  this.mkdir(PUBLIC_DIR + '/css');
+  this.mkdir(PUBLIC_DIR + '/lib');
 
   this.copy('_package.json', 'package.json');
   this.copy('_bower.json', 'bower.json');
