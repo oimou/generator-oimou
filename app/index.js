@@ -19,7 +19,8 @@ util.inherits(OimouGenerator, yeoman.generators.Base);
  *  setup constants
  */
 OimouGenerator.prototype.initConstants = function() {
-  this.public_dir = "public";
+  this.src_dir = "public";
+  this.dest_dir = "dest";
 };
 
 OimouGenerator.prototype.askFor = function askFor() {
@@ -47,15 +48,15 @@ OimouGenerator.prototype.askFor = function askFor() {
 };
 
 OimouGenerator.prototype.app = function app() {
-  this.mkdir(this.public_dir + '');
-  this.mkdir(this.public_dir + '/view');
-  this.mkdir(this.public_dir + '/controller');
-  this.mkdir(this.public_dir + '/model');
-  this.mkdir(this.public_dir + '/js');
-  this.mkdir(this.public_dir + '/css');
-  this.mkdir(this.public_dir + '/lib');
+  var public_directories = [
+    "", "/view", "/controller", "/model", "/js", "/css", "/lib"
+  ];
+  public_directories.forEach(function(dir) {
+    this.mkdir(this.src_dir + dir);
+    this.mkdir(this.dest_dir + dir);
+  }.bind(this));
 
-  this.copy('index.html', this.public_dir + '/index.html');
+  this.copy('index.html', this.dest_dir + '/index.html');
 };
 
 OimouGenerator.prototype.projectfiles = function projectfiles() {
