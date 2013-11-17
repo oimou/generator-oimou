@@ -15,8 +15,17 @@ var OimouGenerator = module.exports = function OimouGenerator(args, options, con
 
 util.inherits(OimouGenerator, yeoman.generators.Base);
 
+/**
+ *  setup constants
+ */
+OimouGenerator.prototype.initConstants = function() {
+  this.public_dir = "public";
+};
+
 OimouGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
+
+  this.initConstants();
 
   // have Yeoman greet the user.
   console.log(this.yeoman);
@@ -36,15 +45,13 @@ OimouGenerator.prototype.askFor = function askFor() {
 };
 
 OimouGenerator.prototype.app = function app() {
-  var PUBLIC_DIR = "public";
-
-  this.mkdir(PUBLIC_DIR + '');
-  this.mkdir(PUBLIC_DIR + '/view');
-  this.mkdir(PUBLIC_DIR + '/controller');
-  this.mkdir(PUBLIC_DIR + '/model');
-  this.mkdir(PUBLIC_DIR + '/js');
-  this.mkdir(PUBLIC_DIR + '/css');
-  this.mkdir(PUBLIC_DIR + '/lib');
+  this.mkdir(this.public_dir + '');
+  this.mkdir(this.public_dir + '/view');
+  this.mkdir(this.public_dir + '/controller');
+  this.mkdir(this.public_dir + '/model');
+  this.mkdir(this.public_dir + '/js');
+  this.mkdir(this.public_dir + '/css');
+  this.mkdir(this.public_dir + '/lib');
 
   this.copy('_package.json', 'package.json');
   this.copy('_bower.json', 'bower.json');
