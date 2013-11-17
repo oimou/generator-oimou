@@ -55,7 +55,7 @@ OimouGenerator.prototype.app = function app() {
   this.mkdir(this.public_dir + '/css');
   this.mkdir(this.public_dir + '/lib');
 
-  this.copy('index.html', 'index.html');
+  this.copy('index.html', this.public_dir + '/index.html');
   this.copy('_package.json', 'package.json');
   this.copy('_bower.json', 'bower.json');
 };
