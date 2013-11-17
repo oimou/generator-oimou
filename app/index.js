@@ -30,15 +30,17 @@ OimouGenerator.prototype.askFor = function askFor() {
   // have Yeoman greet the user.
   console.log(this.yeoman);
 
-  var prompts = [{
-    type: 'confirm',
-    name: 'someOption',
-    message: 'Would you like to enable this option?',
-    default: true
-  }];
+  var prompts = [
+    {
+      type: "input",
+      name: "port",
+      message: "Which port would you like to use as preview?",
+      default: 9080
+    }
+  ];
 
   this.prompt(prompts, function (props) {
-    this.someOption = props.someOption;
+    this.port = props.port;
 
     cb();
   }.bind(this));
