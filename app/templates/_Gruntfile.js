@@ -12,6 +12,6 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.registerTask("watch", ["watch"]);
+  grunt.registerTask("livereload", ["watch"]);
   grunt.registerTask("default", []);
 };
