@@ -56,12 +56,13 @@ OimouGenerator.prototype.app = function app() {
   this.mkdir(this.public_dir + '/lib');
 
   this.copy('index.html', this.public_dir + '/index.html');
-  this.copy('_package.json', 'package.json');
-  this.copy('_bower.json', 'bower.json');
 };
 
 OimouGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
+  this.copy('bowerrc', '.bowerrc');
+  this.copy('_package.json', 'package.json');
+  this.copy('_bower.json', 'bower.json');
   this.copy('_Gruntfile.js', 'Gruntfile.js');
 };
