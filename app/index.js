@@ -47,4 +47,5 @@ OimouGenerator.prototype.app = function app() {
 OimouGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
+  this.copy('_Gruntfile.js', 'Gruntfile.js');
 };
