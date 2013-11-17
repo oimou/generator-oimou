@@ -1,13 +1,13 @@
 
 module.exports = function(grunt) {
   grunt.initConfig({
-    sass: {
-      dist: {
+    stylus: {
+      compile: {
         files: [
           {
             expand: true,
             cwd: "<%= src_dir %>/css",
-            src: ["*.scss"],
+            src: ["*.styl", "**/*.styl", "*.stylus", "**/*.stylus"],
             dest: "<%= dest_dir %>/css",
             ext: ".css"
           }
@@ -26,9 +26,9 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      sass: {
-        files: ["<%= src_dir %>/css/*.scss"],
-        tasks: ["sass:dist"]
+      stylus: {
+        files: ["<%= src_dir %>/css/*.styl", "<%= src_dir %>/css/*.stylus"],
+        tasks: ["stylus:compile"]
       },
 
       livereload: {
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks("grunt-contrib-watch");
-  grunt.loadNpmTasks("grunt-contrib-sass");
+  grunt.loadNpmTasks("grunt-contrib-stylus");
 
   grunt.registerTask("livereload", ["connect:server", "watch"]);
   grunt.registerTask("default", []);
