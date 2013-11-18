@@ -1,6 +1,20 @@
 
 module.exports = function(grunt) {
   grunt.initConfig({
+    jade: {
+      compile: {
+        files: [
+          {
+            expand: true,
+            cwd: "<%= view_dir %>",
+            src: ["index.jade"],
+            dest: "<%= dest_dir %>",
+            ext: ".html"
+          }
+        ]
+      }
+    },
+
     stylus: {
       compile: {
         files: [
@@ -26,6 +40,11 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      jade: {
+        files: ["<%= view_dir %>/index.jade"],
+        tasks: ["jade:compile"]
+      },
+
       stylus: {
         files: ["<%= src_dir %>/css/*.styl", "<%= src_dir %>/css/*.stylus"],
         tasks: ["stylus:compile"]
@@ -43,7 +62,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks("grunt-contrib-watch");
   grunt.loadNpmTasks("grunt-contrib-stylus");
+  grunt.loadNpmTasks("grunt-contrib-jade");
 
+  grunt.registerTask("build", ["jade:compile", "stylus:compile"]);
   grunt.registerTask("livereload", ["connect:server", "watch"]);
-  grunt.registerTask("default", []);
+  grunt.registerTask("default", ["build"]);
 };

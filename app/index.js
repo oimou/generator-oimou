@@ -21,6 +21,7 @@ util.inherits(OimouGenerator, yeoman.generators.Base);
 OimouGenerator.prototype.initConstants = function() {
   this.src_dir = "public";
   this.dest_dir = "dest";
+  this.view_dir = "view";
 };
 
 OimouGenerator.prototype.askFor = function askFor() {
@@ -48,6 +49,7 @@ OimouGenerator.prototype.askFor = function askFor() {
 };
 
 OimouGenerator.prototype.app = function app() {
+  // create directories
   var public_directories = [
     "", "/view", "/controller", "/model", "/js", "/css", "/lib"
   ];
@@ -56,7 +58,10 @@ OimouGenerator.prototype.app = function app() {
     this.mkdir(this.dest_dir + dir);
   }.bind(this));
 
-  this.copy('index.html', this.dest_dir + '/index.html');
+  this.mkdir(this.view_dir);
+
+  // copy files
+  this.copy("view/index.jade", this.view_dir + "/index.jade");
 };
 
 OimouGenerator.prototype.projectfiles = function projectfiles() {
