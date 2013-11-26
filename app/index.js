@@ -68,6 +68,7 @@ OimouGenerator.prototype.projectfiles = function projectfiles() {
   this.copy('editorconfig', '.editorconfig');
   this.copy('jshintrc', '.jshintrc');
   this.copy('bowerrc', '.bowerrc');
+  this.copy('gitignore', '.gitignore');
   this.copy('_package.json', 'package.json');
   this.copy('_bower.json', 'bower.json');
   this.copy('_Gruntfile.js', 'Gruntfile.js');
