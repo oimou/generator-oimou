@@ -29,6 +29,19 @@ module.exports = function(grunt) {
       }
     },
 
+    copy: {
+      main: {
+        files: [
+          {
+            expand: true,
+            cwd: "public/",
+            src: ["js/*", "data/*", "view/*", "model/*", "controller/*", "collection/*"],
+            dest: 'dest/'
+          }
+        ]
+      }
+    },
+
     connect: {
       server: {
         options: {
@@ -50,6 +63,18 @@ module.exports = function(grunt) {
         tasks: ["stylus:compile"]
       },
 
+      copy: {
+        files: [
+          "public/js/*",
+          "public/data/*",
+          "public/view/*",
+          "public/model/*",
+          "public/controller/*",
+          "public/collection/*"
+        ],
+        tasks: ["copy:main"]
+      },
+
       livereload: {
         files: ["<%= dest_dir %>/css/*.css", "<%= dest_dir %>/css/**/*.css"],
         options: {
@@ -64,7 +89,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-stylus");
   grunt.loadNpmTasks("grunt-contrib-jade");
 
-  grunt.registerTask("build", ["jade:compile", "stylus:compile"]);
+  grunt.registerTask("build", ["jade:compile", "stylus:compile", "copy:main"]);
   grunt.registerTask("livereload", ["connect:server", "watch"]);
   grunt.registerTask("default", ["build"]);
 };

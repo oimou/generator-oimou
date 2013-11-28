@@ -51,7 +51,7 @@ OimouGenerator.prototype.askFor = function askFor() {
 OimouGenerator.prototype.app = function app() {
   // create directories
   var public_directories = [
-    "", "/view", "/controller", "/model", "/js", "/css", "/lib"
+    "", "/collection", "/view", "/controller", "/model", "/js", "/css", "/lib"
   ];
   public_directories.forEach(function(dir) {
     this.mkdir(this.src_dir + dir);
